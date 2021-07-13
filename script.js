@@ -1,7 +1,10 @@
 'use strict';
 
-const secretNumber = Math.ceil(Math.random() * 20);
-console.log(secretNumber);
+const generateSecretNumber = () => {
+  return Math.ceil(Math.random() * 20);
+};
+
+let secretNumber = generateSecretNumber();
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', () => {
@@ -26,4 +29,15 @@ document.querySelector('.check').addEventListener('click', () => {
     document.querySelector('.message').textContent = '💀 You lost!';
   }
   document.querySelector('.score').textContent = score;
+});
+
+document.querySelector('.again').addEventListener('click', () => {
+  secretNumber = generateSecretNumber();
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
 });
